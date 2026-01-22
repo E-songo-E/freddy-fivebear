@@ -1,59 +1,45 @@
-
-import { BlockType } from 'scratch-vm/src/extension-support/constants';
-import FreddyIconURL from './freddyfivebear/icon.png';
-import FreddyInsetIconURL from './freddyfivebear/smol.svg';
-
-
-class FreddyExtension {
+class FreddyFivebearExtension {
     constructor(runtime) {
         this.runtime = runtime;
     }
-
 
     getInfo() {
         return {
             id: 'freddyfivebear',
             name: 'Freddy Fivebear',
-            color1: '#FF5555',        // main color for the blocks
-            color2: '#CC4444',        // secondary color
-            color3: '#AA3333',        // tertiary color
-            blockIconURI: FreddyIconURL,
-            insetIconURI: FreddyInsetIconURL,
+            color1: '#FF5722',
+            color2: '#E64A19',
+            color3: '#D84315',
             blocks: [
                 {
                     opcode: 'newFreddy',
-                    blockType: BlockType.COMMAND,
-                    text: 'new Freddy',
-                    func: 'newFreddy'
+                    blockType: 'command',
+                    text: 'new Freddy'
                 },
                 {
                     opcode: 'textFreddy',
-                    blockType: BlockType.REPORTER,
-                    text: 'text Freddy',
-                    func: 'textFreddy'
+                    blockType: 'reporter',
+                    text: 'text Freddy'
                 }
             ]
         };
     }
 
-
-
     newFreddy() {
-        console.log('Freddy appears! 👀');
+        console.log('Freddy Fivebear has entered the stage! 👀');
 
     }
-
 
     textFreddy() {
         const messages = [
             "I'm watching you...",
-            "You can’t escape...",
-            "He’s coming...",
-            "Don’t look behind you..."
+            "Dinner time!",
+            "Five more nights...",
+            "Behind you..."
         ];
-
         return messages[Math.floor(Math.random() * messages.length)];
     }
 }
 
-export default FreddyExtension;
+// Required: export the class
+export default FreddyFivebearExtension;
